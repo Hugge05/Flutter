@@ -1,4 +1,10 @@
 .LogoText
 {
-    height:300px;
+    position: absolute;
+    top:10px;
+    left:20px;
+    font-size:40px;
+    text-decoration: none;
+    background-color: transparent;
+
 }

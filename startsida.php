@@ -6,10 +6,17 @@
 </head>
 
 <div class="LogoText">
-<p> Flutter </p>
+    <a href="startsida.php"> Flutter </a>
+
 
 </div>
+<body>
 
-
+<form action="" method="POST">
+    
+<input 
+</form>
+</body>
+<?php
 
 ?>
