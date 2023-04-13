@@ -5,6 +5,20 @@
     left:20px;
     font-size:40px;
     text-decoration: none;
-    background-color: transparent;
+   
 
+}
+
+.Flutt
+{
+position: absolute;
+top:200px;
+
+}
+
+.loggainKnapp
+{
+    width:50px;
+    height: 30px;
+    border-radius: 20px;
 }
