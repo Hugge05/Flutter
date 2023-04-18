@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="Styling.css">  
+    <link rel="stylesheet" type="text/css" href="Styling.css">  
 <title> Flutter </title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +27,8 @@
 <!--<input type="text" name="t1" class="Flutt" placeholder="Make a noise"> -->
 </form>
  
-    <button class="loggainKnapp" stlye="width:100px;">
-    <a href="loggain.php"> hej</a>
+    <button class="LoggainKnapp" style="width:200px; height:29px; position:absolute; right: 30px; border-radius:40px; top:40px;">
+    <a href="loggain.php"> Logga in/skapa konto</a>
     </button>
 <?php
 #$Flutt = $_POST["t1"];
