@@ -14,7 +14,7 @@
 
 ?>
 
-
+<!-- loggans text. -->
 <div class="LogoText">
     <a href="startsida.php" class="LogoText"> Flutter </a>
 
@@ -22,11 +22,11 @@
 </div>
 <body>
 
-<form action="" method="POST">
+   <!-- <form action="" method="POST"> -->
 
 <!--<input type="text" name="t1" class="Flutt" placeholder="Make a noise"> -->
 </form>
- 
+    <!-- här är den knapp som man ska klicka på om man ska logga in eller skapa ett konto. -->
     <button class="LoggainKnapp" style="width:200px; height:29px; position:absolute; right: 30px; border-radius:40px; top:40px;">
     <a href="loggain.php"> Logga in/skapa konto</a>
     </button>

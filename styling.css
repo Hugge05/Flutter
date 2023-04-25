@@ -37,3 +37,7 @@ body
     display: flex;
     justify-content: center;
 }
+.skapaKonto
+{
+    font-size:40px;
+}
