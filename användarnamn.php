@@ -10,6 +10,7 @@ $i=0;
 $exists=false;
 while ($row = $användarnamn->fetchArray(SQLITE3_ASSOC))
 { 
+    // kollar om det användarnamn man vill ha redan finns.
     if($användarInput == $row['användarnamn'])
     {
         $exists = true;
@@ -17,17 +18,19 @@ while ($row = $användarnamn->fetchArray(SQLITE3_ASSOC))
     
 
 }
-
+// om användaren redan existerar
 if ($exists == true)
 {
+    // skapar en cookie
     setcookie("free", "no", time()+2,'/');
-
+    // skickar till skapa konto sidan.
     header("Location: skapakonto.php");
 }
 else 
 {
+    // skapar en cookie 
     setcookie("free", "yes", time()+2,'/');
-
+    // skickar till skapa konto sidan
     header("Location: skapakonto.php");
 
 }

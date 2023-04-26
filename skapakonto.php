@@ -9,23 +9,31 @@
 <body>
 
 
-
+    <!-- formulär för att skapa användarnamn-->
     <form action="användarnamn.php" method="POST">
     <input type ="text" name="skapaAnvändarnamn" placeholder="skriv in din $FlutterTag"> 
-    <input type="submit"> <?php
+    <!-- skickar användaren till användarnamn.php -->
+    <input type="submit"></form> <?php
+    # skapar en cookie för att kolla om användarnamnet är tillgängligt.
 if(isset($_COOKIE['free'])) 
 {
+    # om användarnamnet är tillgängligt 
 	if ($_COOKIE['free'] == "yes")
     {
         echo "Användarnamn tillgängligt";
         ?>
+        <html>
         <br>
         <br>
-        <form action="skaparkonto.php" method="POST">
+        <!-- formulär för att skriva lösenord. -->
+        <form action="startsida.php" method="POST">
         <input type="password" name="skapaLösenord" placeholder="Skriv in ett lösenord">
         <input type="submit">
+       
     </form>
+    </html>
         <?php
+        #om användarnammnet är upptaget.
     } else 
     {
         echo "Användarnamn upptaget";
