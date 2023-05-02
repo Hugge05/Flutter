@@ -2,13 +2,15 @@
 $användarInput = $_POST["skapaAnvändarnamn"];
 $db = new SQLite3('uppgifter.sq3');
 
-
+$db->exec("CREATE TABLE IF NOT EXISTS användaruppgifter (användarnamn text, lösenord text)");
+    
+  
 $allInputQuery = "SELECT * FROM användaruppgifter";
 
-$användarnamn = $db->query($allInputQuery);
+$användarnamnet = $db->query($allInputQuery);
 $i=0;
 $exists=false;
-while ($row = $användarnamn->fetchArray(SQLITE3_ASSOC))
+while ($row = $användarnamnet->fetchArray(SQLITE3_ASSOC))
 { 
     // kollar om det användarnamn man vill ha redan finns.
     if($användarInput == $row['användarnamn'])
@@ -29,7 +31,8 @@ if ($exists == true)
 else 
 {
     // skapar en cookie 
-    setcookie("free", "yes", time()+2,'/');
+    setcookie("free", "yes", time()+60,'/');
+    setcookie("uname", $_POST["skapaAnvändarnamn"], time()+200,'/');
     // skickar till skapa konto sidan
     header("Location: skapakonto.php");
 

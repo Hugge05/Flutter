@@ -32,7 +32,13 @@
     </button>
 <?php
 #$Flutt = $_POST["t1"];
-
+$db = new SQLite3('uppgifter.sq3'); // Skapar ny eller öppnar existerande
+ $db->exec("CREATE TABLE IF NOT EXISTS användaruppgifter (användarnamn text, lösenord text)");
+    
+  if (isset($_COOKIE['tooshort']))
+  {
+    setcookie("tooshort", "yes", time()-50,'/');
+  }
 /*if(strlen($Flutt) == 0)
 {
     ?>
