@@ -4,7 +4,7 @@ $användarnamn = $_POST["skapaAnvändarnamn"];
 $lösenord = $_POST["skapaLösenord"];
 $db = new SQLite3('uppgifter.sq3');
  
-$db->exec("INSERT INTO användaruppgifter VALUES('".$användarnamn."','".hash('sha3-512',$lösenord)."')");
+
 for($i = 0; $i < 3; $i++)
 {
 if (strlen($lösenord) <6 )
@@ -19,9 +19,11 @@ if (strlen($lösenord) <6 )
     <h1> Skapar konto... </h1>
 
     <?php
-    break;
+    $db->exec("INSERT INTO användaruppgifter VALUES('".$användarnamn."','".hash('sha3-512',$lösenord)."')");
     header("Location: flöde.php");
-
+    break;
+   
+    
 }
 
 
