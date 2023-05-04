@@ -13,7 +13,8 @@ if (strlen($lösenord) <6 )
     setcookie("tooshort", "yes", time()+50,'/');
     header("Location: skapakonto.php");
         
-} else {
+} else 
+{
     setcookie("tooshort", "no", time()+50,'/');
     ?>
     <h1> Skapar konto... </h1>

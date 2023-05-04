@@ -1,27 +1,48 @@
 <?php
 $db = new SQLite3('uppgifter.sq3');
  ?>
-<form action="" method="POST">
+<form action="skapainlägg.php" method="POST">
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
+<?php
 
+?>
 
 <?php
 #skapar en tabell för fluttsen (inläggen) 
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");
+#där man skriver inlägget
 
-$Flutt = $_POST["t1"];
-$likes = 0;
-if(strlen($Flutt) == 0)
+
+
+# kollar om inlägget är tomt.
+if(isset($_COOKIE['empty'])==true)
+{
+if ($_COOKIE['empty'] == "true")
 {
     ?>
     <script>
-        alert("Du måste ha skrivit något för att skicka!");
+        // om inlägget är tomt skickar man iväg en alert.
+        alert("Du kan inte skicka en ljudlös flutt! Skriv några ord för att skicka!");
     </script>
-        <?php
+    <?php
 }
 else 
 {
-    $db->exec("INSERT INTO Flutts (Flutt, antalord, likes) VALUES('".$Flutt."'," .strlen($Flutt).", ".$likes.")");
+    # skapar en tabell för alla inläggen.
+    
+}
+}
+$allInputQuery = "SELECT * FROM  Flutts";
+$uppgifter = $db->query($allInputQuery);
+while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
+{ 
+ ?>
+<div style="border-style:solid;">
+</div>
+ <?php
+ echo $row['Flutt'] . ',    ' . $row['likes'] .',    '.  /*$row['r'].*/ '<br/>'; #denna skriver ut 
+ 
+ 
 }
 
 ?>
@@ -34,6 +55,3 @@ else
 
 </style>
 
-<?php
-
-?>
