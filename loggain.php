@@ -20,8 +20,15 @@
         <input type="text" name="Användarnamn" placeholder="Användarnamn">
         <h2>
         <label> Lösenord </label>
-        <h2>
+        </h2>
+            
         <input type="password" name="Lösenord" placeholder="Lösenord">
+        <?php
+            if(ISSET($_COOKIE['inloggad']) == true)
+            {
+               echo "Lösenordet var fel! försök igen!";
+            }
+            ?>
         <button type="Submit"> Log in </button>
         <a href="skapakonto.php" name="skapaKonto"> Inget konto? Skapa ett här. </a>
     </form>

@@ -32,20 +32,23 @@ else
     
 }
 }
-$allInputQuery = "SELECT * FROM  Flutts";
+$allInputQuery = "SELECT * FROM  Flutts order by rowid desc";
 $uppgifter = $db->query($allInputQuery);
 while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
 { 
  ?>
-<div style="border-style:solid;">
-</div>
+<div style="border-style:dotted; width:300px; height:200px; border-radius:20px;   ">
+
+<?php
+   echo $_COOKIE['user']', <br>' . $row['Flutt'] .  '<br> <br> <br> <br> <br> <br> <br> <br>  ' .  $row['likes'] .'
+ <BR> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> '.  /*$row['r'].*/ '<br/>'#denna skriver ut 
+  ?>
  <?php
- echo $row['Flutt'] . ',    ' . $row['likes'] .',    '.  /*$row['r'].*/ '<br/>'; #denna skriver ut 
- 
  
 }
 
 ?>
+</div>
 <style>
 .t1
 {

@@ -11,7 +11,7 @@
 
     <!-- formulär för att skapa användarnamn-->
     <form action="användarnamn.php" method="POST">
-    <input type="text" name="skapaAnvändarnamn" placeholder="skriv in din $FlutterTag"> 
+    <input type="username" name="skapaAnvändarnamn" placeholder="skriv in din $FlutterTag"> 
     <!-- skickar användaren till användarnamn.php -->
     <input type="submit"></form> <?php
     # skapar en cookie för att kolla om användarnamnet är tillgängligt.
