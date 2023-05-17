@@ -40,8 +40,8 @@ while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funkti
 <div style="border-style:dotted; width:300px; height:200px; border-radius:20px;   ">
 
 <?php
-   echo $_COOKIE['user']', <br>' . $row['Flutt'] .  '<br> <br> <br> <br> <br> <br> <br> <br>  ' .  $row['likes'] .'
- <BR> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> '.  /*$row['r'].*/ '<br/>'#denna skriver ut 
+   echo $_COOKIE['inlogg']  . $row['Flutt'] .  '  <br> <br> <br> <br> <br>  ' .  $row['likes'] .
+' <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> '.  /*$row['r'].*/ '<br>'#denna skriver ut 
   ?>
  <?php
  

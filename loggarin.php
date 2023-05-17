@@ -9,6 +9,7 @@ $db = new SQLite3('uppgifter.sq3');
     $db->exec("CREATE TABLE IF NOT EXISTS användaruppgifter (användarnamn text, lösenord text)");
     $allInputQuery = "SELECT * FROM  användaruppgifter";
 $uppgifter = $db->query($allInputQuery);
+$inloggcheck = false;
     while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
 { 
     #lägger in användarnamnet och lösenordet.
@@ -16,21 +17,36 @@ $uppgifter = $db->query($allInputQuery);
     {
         echo "Användarnamn korrekt!";
         #header("Location: loggain.php");
-        if (hash('sha3-512', $inskickatlösenord) == ['lösenord'])
+        if (hash('sha3-512', $inskickatlösenord) == $row['lösenord'])
         {
             #sparar användarnamnet.
-            setcookie(inlogg, $användarnamn, time()+5000, '/');
-            setcookie(inloggad, true, time()+5000, '/');
-            header("Location: flöde.php");
+            setcookie("inlogg", $användarnamn, time()+5000, '/');
+            setcookie("inloggad", true, time()+5000, '/');
+            $inloggcheck = true;
         }
-        if (hash('sha3-512', $inskickatlösenord) != ['lösenord'])
+        else if (hash('sha3-512', $inskickatlösenord) != $row['lösenord'])
         {
-            setcookie(inloggad, false, time()+5000, '/');
-            echo "Du har skrivit in fel lösenord.";
-            header("Location: loggain.php");
+            setcookie("inloggad", false, time()+5000, '/');
+           # echo "Du har skrivit in fel lösenord.";
+            #header("Location: loggain.php");
+            
         }
     }
-    
+    else 
+    {
+      #  header("Location: loggain.php");
+        #setcookie(felanv, true, time()+30, '/');
+    }
+if ($inloggcheck == false)
+{
+    header("Location: loggain.php");
+}
+else if ($inloggcheck == true)
+{
+    header("Location: flöde.php");
+
+}
+
 }
     
     ?>

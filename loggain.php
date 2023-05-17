@@ -24,9 +24,11 @@
             
         <input type="password" name="Lösenord" placeholder="Lösenord">
         <?php
-            if(ISSET($_COOKIE['inloggad']) == true)
+            if(ISSET($_COOKIE["inloggad"]) == false)
             {
+            
                echo "Lösenordet var fel! försök igen!";
+            
             }
             ?>
         <button type="Submit"> Log in </button>

@@ -3,7 +3,7 @@
 $användarnamn = $_POST["skapaAnvändarnamn"];
 $lösenord = $_POST["skapaLösenord"];
 $db = new SQLite3('uppgifter.sq3');
- 
+$db->exec("CREATE TABLE IF NOT EXISTS användaruppgifter (användarnamn text, lösenord text)");
 
 for($i = 0; $i < 3; $i++)
 {
@@ -16,6 +16,8 @@ if (strlen($lösenord) <6 )
 } else 
 {
     setcookie("tooshort", "no", time()+50,'/');
+    setcookie("inlogg", $användarnamn, time()+5000, '/');
+    setcookie("inloggad", "true", time()+5000, '/');
     ?>
     <h1> Skapar konto... </h1>
 
