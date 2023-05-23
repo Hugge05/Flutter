@@ -10,6 +10,7 @@ $db = new SQLite3('uppgifter.sq3');
     $allInputQuery = "SELECT * FROM  användaruppgifter";
 $uppgifter = $db->query($allInputQuery);
 $inloggcheck = false;
+$admin = false;
     while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
 { 
     #lägger in användarnamnet och lösenordet.
@@ -20,7 +21,7 @@ $inloggcheck = false;
         if (hash('sha3-512', $inskickatlösenord) == $row['lösenord'])
         {
             #sparar användarnamnet.
-            setcookie("inlogg", $användarnamn, time()+5000, '/');
+            setcookie("inlogg", $användarnamn, time()+6000, '/');
             setcookie("inloggad", true, time()+5000, '/');
             $inloggcheck = true;
         }
@@ -31,11 +32,16 @@ $inloggcheck = false;
             #header("Location: loggain.php");
             
         }
+    
     }
-    else 
+    else if($användarnamn == "Admin123")
     {
-      #  header("Location: loggain.php");
-        #setcookie(felanv, true, time()+30, '/');
+      
+        if ($inskickatlösenord == "Administrator")
+        {
+           
+            $admin = true;
+        }
     }
 if ($inloggcheck == false)
 {
@@ -46,7 +52,11 @@ else if ($inloggcheck == true)
     header("Location: flöde.php");
 
 }
-
+if ($admin == true)
+{
+    setcookie("admin", $true, time()+5000, '/');
+    header("Location: admin.php");
+}
 }
     
     ?>

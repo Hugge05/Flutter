@@ -3,11 +3,10 @@ $db = new SQLite3('uppgifter.sq3');
  ?>
 <form action="skapainlägg.php" method="POST">
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
-</form>
 <?php
 
 ?>
-<button style="position:absolute; right:20px; border-radius:20px;"> begär verifikation </button>
+
 <?php
 #skapar en tabell för fluttsen (inläggen) 
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");
@@ -41,10 +40,11 @@ while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funkti
 <div style="border-style:dotted; width:300px; height:250px; border-radius:20px;  ">
 
 <?php
-   echo $_COOKIE['inlogg']. '<br> <br> <br> '
+   echo "Hugge"
    . $row['Flutt'] .  '  <br> <br> <br> <br> <br>  ' .  $row['likes'] .
-' <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> '.  /*$row['r'].*/ '<br>'#denna skriver ut 
+' <br> <br> <br> <br> <br> <br> <br>' ?> <button> Radera Flutt </button> <?php ' <br> <br> <br> <br> '.  /*$row['r'].*/ '<br>'#denna skriver ut 
   ?>
+  
  <?php
  
 }

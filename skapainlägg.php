@@ -12,9 +12,18 @@ if(strlen($Flutt) == 0)
 }
 else 
 {
+    if (ISSET($_COOKIE["admin"]) == true)
+    {
     $db->exec("INSERT INTO Flutts (Flutt, antalord, likes) VALUES('".$Flutt."'," .strlen($Flutt).", ".$likes.")");
     setcookie("empty", "false", time()+30, '/');
+    header("Location: admin.php");
+    }
+    else 
+    {
+        $db->exec("INSERT INTO Flutts (Flutt, antalord, likes) VALUES('".$Flutt."'," .strlen($Flutt).", ".$likes.")");
+    setcookie("empty", "false", time()+30, '/');
     header("Location: flöde.php");
+    }
 }
 
 
