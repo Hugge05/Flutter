@@ -57,6 +57,10 @@ if ($admin == true)
     setcookie("admin", $true, time()+5000, '/');
     header("Location: admin.php");
 }
+else 
+{
+    header("Location: loggain.php");
+}
 }
     
     ?>

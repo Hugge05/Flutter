@@ -3,6 +3,7 @@ $db = new SQLite3('uppgifter.sq3');
  ?>
 <form action="skapainlägg.php" method="POST">
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
+</form>
 <?php
 
 ?>
@@ -12,8 +13,9 @@ $db = new SQLite3('uppgifter.sq3');
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");
 #där man skriver inlägget
 
-
-
+?>
+<button>  <a href="verifikationcheck.php"> Verifikationscheck </a> </button>
+<?php
 # kollar om inlägget är tomt.
 if(isset($_COOKIE['empty'])==true)
 {
@@ -51,6 +53,7 @@ while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funkti
 
 ?>
 </div>
+<br> <br> <br> <br>
 <style>
 .t1
 {

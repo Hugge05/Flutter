@@ -7,7 +7,9 @@ $db = new SQLite3('uppgifter.sq3');
 <?php
 
 ?>
+<form action="begärverifikation.php" method="POST">
 <button style="position:absolute; right:20px; border-radius:20px;"> begär verifikation </button>
+</form>
 <?php
 #skapar en tabell för fluttsen (inläggen) 
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");

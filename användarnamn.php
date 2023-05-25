@@ -32,7 +32,7 @@ else
 {
     // skapar en cookie 
     setcookie("free", "yes", time()+60,'/');
-    setcookie("uname", $_POST["skapaAnvändarnamn"], time()+200,'/');
+    setcookie("uname", $_POST["skapaAnvändarnamn"], time()+6000,'/');
     // skickar till skapa konto sidan
     header("Location: skapakonto.php");
 
