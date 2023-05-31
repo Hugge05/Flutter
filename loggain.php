@@ -24,24 +24,22 @@
             
         <input type="password" name="Lösenord" placeholder="Lösenord">
         <?php
+        #kollar om man blir inloggad eller inte.
             if(ISSET($_COOKIE["inloggad"]) == false)
             {
-            
+                #om lösenordet var fel så får maN error, (funkar tyvärr inte).
                echo "Lösenordet var fel! försök igen!";
             
             }
             ?>
+        <!-- knapp för att försöka logga in -->
         <button type="Submit"> Log in </button>
+        <!-- om man inte har ett konto så måste man skapa ett konto. -->
         <a href="skapakonto.php" name="skapaKonto"> Inget konto? Skapa ett här. </a>
     </form>
     
     
-    <!--<div class="Login">
-        <form action="inloggad.php" method="POST">
-        <input type="text" name="andändarnamn" placeholder="Användarnamn">
-        <br>
-        <input type="password" name="Lösenord" placeholder="Lösenord"> 
-        <input type="submit"> -->
+   
 </div>
 <style>
      body

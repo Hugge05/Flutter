@@ -5,11 +5,13 @@ $db = new SQLite3('uppgifter.sq3');
     $användarnamn = $_POST["Användarnamn"];
     #Här kommer input för Lösenord.
     $inskickatlösenord = $_POST["Lösenord"];
-    #Skapar en tabell för alla användaruppgifter.
+    #Öppnar en tabell för alla användaruppgifter.
     $db->exec("CREATE TABLE IF NOT EXISTS användaruppgifter (användarnamn text, lösenord text)");
     $allInputQuery = "SELECT * FROM  användaruppgifter";
 $uppgifter = $db->query($allInputQuery);
+# kolla om man är inloggad.
 $inloggcheck = false;
+#kollar om man är admin.
 $admin = false;
     while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
 { 
@@ -34,33 +36,50 @@ $admin = false;
         }
     
     }
+    #kolla om man är admin.
     else if($användarnamn == "Admin123")
     {
-      
+      #kollar om man har rätt användarnamn.
+      $inloggcheck = true;
         if ($inskickatlösenord == "Administrator")
         {
            
             $admin = true;
+            break;
         }
     }
-if ($inloggcheck == false)
-{
-    header("Location: loggain.php");
 }
-else if ($inloggcheck == true)
+    #om man inte blir inloggad så skickas man tillbaka till logga in sidan.
+if ($inloggcheck == false && $admin==false)
 {
-    header("Location: flöde.php");
+    #skickar tillbaka till logga in sidan.
+    echo "1";
+   # header("Location: loggain.php");
+}
+#om man blir inloggad.
+else if ($inloggcheck == true && $admin == false)
+{
+    #skickas till flöde sidan.
+    echo "2";
+   # header("Location: flöde.php");
 
 }
-if ($admin == true)
+#om man loggar in som admin.
+else if ($admin == true)
 {
-    setcookie("admin", $true, time()+5000, '/');
-    header("Location: admin.php");
+    #skapar en cookie för att man är admin. 
+    #denna har just nu inte en funktion på grund utav tidsbrist för att få den att funka.
+    setcookie("admin", true, time()+5000, '/');
+    #skcickar en till admin sidan.
+    echo "3";
+   # header("Location: admin.php");
 }
 else 
 {
-    header("Location: loggain.php");
+    #om man inte lyckas logga in som admin så kommer man tillbaka till logga in sidan.
+    echo "4";
+    # header("Location: loggain.php");
 }
-}
+
     
     ?>

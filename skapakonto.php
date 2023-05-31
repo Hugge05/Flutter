@@ -15,13 +15,15 @@
     <!-- skickar användaren till användarnamn.php -->
     <input type="submit"></form> <?php
     # skapar en cookie för att kolla om användarnamnet är tillgängligt.
-if(isset($_COOKIE['free'])) 
+    #om användernamnet är tillgängligt.
+    if(isset($_COOKIE['free'])) 
 {
     # om användarnamnet är tillgängligt 
 	if ($_COOKIE['free'] == "yes")
     {
+        #skicka ut att användarnamnet är tllgängligt.
         echo "Användarnamn tillgängligt";
-        echo $_COOKIE['uname'];
+        
         ?>
         <html>
         <br>
@@ -32,12 +34,14 @@ if(isset($_COOKIE['free']))
         <input type="password" name="skapaLösenord" placeholder="Skriv in ett lösenord"> 
         <input type="submit">
         <?php
+        #om lösenordet är för kort.
         if (isset($_COOKIE['tooshort']))
         {
 
        
         if ($_COOKIE['tooshort'] == "yes")
         {
+            #sickar ut att lösenordet är för kort.
             echo "Lösenordet är för kort. försök igen";
           
             
@@ -52,6 +56,8 @@ if(isset($_COOKIE['free']))
         #om användarnammnet är upptaget.
     } else 
     {
+        #printar ut om användarnamnet är upptaget.
+        #man kommer inte kunna skriva in ett lösenord förens man har hitat ett tillgängligt användarnamn.
         echo "Användarnamn upptaget";
 
     }

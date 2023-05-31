@@ -1,6 +1,8 @@
 <?php
+#öppnar databasen
 $db = new SQLite3('uppgifter.sq3');
  ?>
+ <!-- form för att skapa ett inlägg. POST för att ha det säkert! -->
 <form action="skapainlägg.php" method="POST">
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
 </form>
@@ -12,6 +14,7 @@ $db = new SQLite3('uppgifter.sq3');
 </form>
 <?php
 #skapar en tabell för fluttsen (inläggen) 
+#lägger in inlägget i tabellen för inlägg.
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");
 #där man skriver inlägget
 
@@ -43,6 +46,7 @@ while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funkti
 <div style="border-style:dotted; width:300px; height:250px; border-radius:20px;  ">
 
 <?php
+#printar ut användarnamnet på den som skickade inlägget.
    echo $_COOKIE['inlogg']. '<br> <br> <br> '
    . $row['Flutt'] .  '  <br> <br> <br> <br> <br>  ' .  $row['likes'] .
 ' <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> '.  /*$row['r'].*/ '<br>'#denna skriver ut 
