@@ -11,7 +11,8 @@
 </head>
 <body>
 <?php 
-
+setcookie("admin", "empty", time()-60, '/');
+setcookie("inloggad", "false", time()-60, '/');
 ?>
 
 <!-- loggans text. -->

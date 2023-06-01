@@ -38,6 +38,7 @@ else
         #skickar användaren till flöde sidan.
         header("Location: flöde.php");
     }
+    
 }
 
 

@@ -5,7 +5,10 @@ $db = new SQLite3('uppgifter.sq3');
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
 </form>
 <?php
-
+if (!isset($_COOKIE['admin']))
+{
+    header("Location: loggain.php");
+}
 ?>
 
 <?php

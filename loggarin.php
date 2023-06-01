@@ -13,6 +13,21 @@ $uppgifter = $db->query($allInputQuery);
 $inloggcheck = false;
 #kollar om man är admin.
 $admin = false;
+
+
+if($användarnamn == "Admin123")
+    {
+      #kollar om man har rätt användarnamn.
+    
+        if ($inskickatlösenord == "Administrator")
+        {
+            setcookie("admin", true, time()+5000, '/');
+            header("Location: admin.php");
+         
+        }
+    }
+
+
     while ($row = $uppgifter->fetchArray(SQLITE3_ASSOC))#SQLITE3_ASSOC är en funktion i SQLite3 som hämtar info från 
 { 
     #lägger in användarnamnet och lösenordet.
@@ -36,49 +51,21 @@ $admin = false;
         }
     
     }
-    #kolla om man är admin.
-    else if($användarnamn == "Admin123")
-    {
-      #kollar om man har rätt användarnamn.
-      $inloggcheck = true;
-        if ($inskickatlösenord == "Administrator")
-        {
-           
-            $admin = true;
-            break;
-        }
-    }
 }
     #om man inte blir inloggad så skickas man tillbaka till logga in sidan.
-if ($inloggcheck == false && $admin==false)
+if ($inloggcheck == false)
 {
     #skickar tillbaka till logga in sidan.
     echo "1";
-   # header("Location: loggain.php");
+    header("Location: loggain.php");
 }
 #om man blir inloggad.
-else if ($inloggcheck == true && $admin == false)
+else if ($inloggcheck == true)
 {
     #skickas till flöde sidan.
-    echo "2";
-   # header("Location: flöde.php");
 
-}
-#om man loggar in som admin.
-else if ($admin == true)
-{
-    #skapar en cookie för att man är admin. 
-    #denna har just nu inte en funktion på grund utav tidsbrist för att få den att funka.
-    setcookie("admin", true, time()+5000, '/');
-    #skcickar en till admin sidan.
-    echo "3";
-   # header("Location: admin.php");
-}
-else 
-{
-    #om man inte lyckas logga in som admin så kommer man tillbaka till logga in sidan.
-    echo "4";
-    # header("Location: loggain.php");
+    header("Location: flöde.php");
+
 }
 
     

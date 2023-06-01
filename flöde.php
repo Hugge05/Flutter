@@ -7,7 +7,11 @@ $db = new SQLite3('uppgifter.sq3');
 <input type="text" name="t1" class="Flutt" placeholder="Make a noise" style="height:50px; width:400px; border-radius:20px; position:absolute; left:400px; top: 50px;">
 </form>
 <?php
-
+if (!isset($_COOKIE['inloggad']))
+{
+    setcookie("inloggad", false, time()+5000, '/');
+    header("Location: loggain.php");
+}
 ?>
 <form action="begärverifikation.php" method="POST">
 <button style="position:absolute; right:20px; border-radius:20px;"> begär verifikation </button>
@@ -18,7 +22,12 @@ $db = new SQLite3('uppgifter.sq3');
 $db->exec("CREATE TABLE IF NOT EXISTS Flutts (Flutt text, antalord int, likes int)");
 #där man skriver inlägget
 
+?>
+<form action="loggaut.php" method="POST">
+<button> Logga ut </button>
 
+<?php
+$shack = "Jag vill spela shack";
 
 # kollar om inlägget är tomt.
 if(isset($_COOKIE['empty'])==true)
